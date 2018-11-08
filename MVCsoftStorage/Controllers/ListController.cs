@@ -16,14 +16,27 @@ namespace MVCsoftStorage.Controllers
 
         public ActionResult Index(int? id)
         {
-            Pagintation paginat = new Pagintation(id);
+            int countPost = db.posts.Count();
+            Pagintation paginat = new Pagintation(id, countPost);
 
-            var request = (from c in db.preposts
-                            orderby c.id descending
-                            select c).Skip(paginat.firstElement).Take(elementPage);
+            var request = (from c in db.posts
+                           orderby c.id descending
+                           select new ListItem
+                           {
+                               Name = c.name,
+                               Id = c.id,
+                               Poster = c.images.FirstOrDefault(n => n.type == "post").href,
+                            }).Skip(paginat.firstElement).Take(elementPage);
 
-            List<preposts> content = request.ToList();
-            ListContent listContent = new ListContent(content);
+            List<ListItem> content = request.ToList();
+            ListContent<ListItem> listContent = new ListContent<ListItem>(content);
+
+            var query =
+                from el in db.posts
+                select new
+                {
+                    img = el.images.Select(n => n.type == "post")
+                };
 
             ViewBag.Preposts = listContent.GetCardPage(elementLine);
             ViewBag.Pagination = paginat;

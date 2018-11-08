@@ -12,12 +12,11 @@ namespace MVCsoftStorage.Class
         int firstElementPage;
         int elementPage = ViewsSettings.elementPage;
         int paginatMax = ViewsSettings.countNumberPagin;
-        List<int> pageList = new List<int>();
+        List<int> pageList;
 
-        public Pagintation(int? newPage)
+        public Pagintation(int? newPage, int _countPost)
         {
-            DBContext db = new DBContext();
-            countPost = db.preposts.Count();
+            countPost = _countPost;
 
             MaxPage = 0;    // можно указывать что угодно, значение вычисляется самостоятельно
             CurrentPage = newPage ?? 1;
@@ -26,7 +25,7 @@ namespace MVCsoftStorage.Class
                 CurrentPage = 1;
 
             firstElement = 0;  // можно указывать что угодно, значение вычисляется самостоятельно
-            pageNumberList = new List<int>();  // можно указывать что угодно, значение вычисляется самостоятельно
+            pageNumberList = new List<int>();
         }
 
         public int firstElement
@@ -56,6 +55,8 @@ namespace MVCsoftStorage.Class
             get { return pageList; }
             private set
             {
+                pageList = value;
+
                 int fixLeftCount = paginatMax / 2;
                 if (paginatMax % 2 != 0)
                     fixLeftCount++;

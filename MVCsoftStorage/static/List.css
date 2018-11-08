@@ -1,0 +1,10 @@
+﻿.listIMG {
+    width: 225px;
+    height: 225px;
+    object-fit: contain;
+    margin-top: 20px;
+    -webkit-filter: brightness(250%);
+    filter: brightness(250%);
+    -webkit-filter: contrast(125%);
+    filter: contrast(125%);
+}
