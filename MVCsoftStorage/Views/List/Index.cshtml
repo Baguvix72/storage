@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<nav aria-label="navigation page block" class="mt-2">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
+        @foreach (var item in ViewBag.Pagination.pageNumberList)
+        {
+            if (ViewBag.Pagination.CurrentPage == item)
+            {
+                <li class="page-item active"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
+            }
+        }
+        <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
+    </ul>
+</nav>
+@foreach (var list in ViewBag.Preposts)
+{
+    <div class="container mt-2">
+        <div class="card-deck">
+            @foreach (var item in list)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.id</h5>
+                        <p class="card-text">@item.name</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="container mx-auto">
+                            <form>
+                                <a href="@Url.RouteUrl("Default", new {controller = "Item", action = "Index", id = item.id })"><button type="button" class="btn btn-primary">Подробнее</button></a>
+                                <button type="button" class="btn btn-success">Скачать</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+<nav aria-label="navigation page block" class="mt-2">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
+        @foreach (var item in ViewBag.Pagination.pageNumberList)
+        {
+            if (ViewBag.Pagination.CurrentPage == item)
+            {
+                <li class="page-item active"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
+            }
+        }
+        <li class="page-item"><a class="page-link" href="@Url.RouteUrl("Default", new { id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
+    </ul>
+</nav>
