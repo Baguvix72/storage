@@ -6,7 +6,7 @@
     <div class="card mb-3">
         {% include "Post/inc_item/inc_desc/carous.html" %}
         <div class="card-body">
-            <h4 class="card-title"><b>{{ Post.header }}</b></h4>
+            <h4 class="card-title"><b>@ViewBag.Post.Name</b></h4>
             <p class="card-text">
                 <b>Официальный сайт:</b>
                 <br>
@@ -15,34 +15,28 @@
             <p class="card-text">
                 <b>Описание:</b>
                 <br>
-                {{ Post.discription }}
-
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="heading1">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseOne">
-                                    Возможности:
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
-                            <div class="card-body">
-                                • Сбросить интернет-протоколы (TCP/IP). Инструмент автоматически переписывает ключи реестра, относящиеся к протоколу. Будут сброшены маски подсети, DNS, IP.<br />
-                                • Восстановить Winsock (сброс каталога). Исправляет проблемы с Winsock. Сюда можно отнести выключение Интернета без каких-либо ошибок; не всем программам доступна Сеть, периодическая работа Интернета без видимых причин.&lt;br /&gt;
-                                • Обновить интернет-подключения. Отключает все интернет-соединения и заново запускает их. Функция идентична команде ipconfi /renew в командной строке. Обновляются IP-адрес сетевого адаптера, адрес шлюза и прочие настройки TCP/IP, если настроен DHCP.&lt;br /&gt;
-                                • Сбросить DNS-кэш (система доменных имен). Автоматическая очистка DNS-кэша. Идентична команде ipconfig /flushdns.&lt;br /&gt;
-                                • Восстановить Internet Explorer. Настройка работы IE. Предотвращает вылеты браузера и его зависания.&lt;br /&gt;
-                                • Очистить историю обновлений Windows. Исправляет ошибки системы Windows Update путем очистки папки C:WindowsSoftwareDistributionDataStore.&lt;br /&gt;
-                                • Исправить обновление Windows/автообновление. Радикальный метод борьбы с ошибками, которые связаны с обновлением Windows.&lt;br /&gt;
-                                • Восстановить SSL/HTTPS/шифрование. Исправление ошибок связанных с шифрованием.&lt;br /&gt;
-                                • Сбросить конфигурацию брандмауэра Windows. Сброс настроек системного брандмауэра.&lt;br /&gt;
-                                • Восстановить файл hosts по умолчанию. Полное очищение файла hosts.
+                @{ int index = 1;}
+                @Html.Raw(ViewBag.Post.Desc)
+                @foreach (var item in ViewBag.Post.Spoilers)
+                {
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="@string.Format("heading{0}", index)">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="@string.Format("#collapse{0}", index)" aria-expanded="false" aria-controls="collapseOne">
+                                        @Html.Raw(item.name)
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="@string.Format("collapse{0}", index)" class="collapse" aria-labelledby="@string.Format("heading{0}", index)" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    @Html.Raw(item.content)
+                                    @{ index++;}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                }
             </p>
             {% for Item in Spoilers %}
             {% include "Post/inc_item/inc_desc/collap.html" with Item=Item %}

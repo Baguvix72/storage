@@ -10,12 +10,12 @@ namespace MVCsoftStorage.Controllers
 {
     public class ListController : Controller
     {
-        DBContext db = new DBContext();
         int elementPage = ViewsSettings.elementPage;
         int elementLine = ViewsSettings.elementLine;
 
         public ActionResult Index(int? id)
         {
+            DBContext db = new DBContext();
             int countPost = db.posts.Count();
             Pagintation paginat = new Pagintation(id, countPost);
 
@@ -30,13 +30,6 @@ namespace MVCsoftStorage.Controllers
 
             List<ListItem> content = request.ToList();
             ListContent<ListItem> listContent = new ListContent<ListItem>(content);
-
-            var query =
-                from el in db.posts
-                select new
-                {
-                    img = el.images.Select(n => n.type == "post")
-                };
 
             ViewBag.Preposts = listContent.GetCardPage(elementLine);
             ViewBag.Pagination = paginat;
