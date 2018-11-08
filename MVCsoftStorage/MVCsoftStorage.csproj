@@ -200,8 +200,6 @@
     <Compile Include="images.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PostContext.cs" />
-    <Compile Include="Models\Prepost.cs" />
     <Compile Include="platforms.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

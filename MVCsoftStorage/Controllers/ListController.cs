@@ -4,16 +4,15 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVCsoftStorage.Models;
 using MVCsoftStorage.Class;
 
 namespace MVCsoftStorage.Controllers
 {
     public class ListController : Controller
     {
-        private PostContext db = new PostContext();
-        private int elementPage = ViewsSettings.elementPage;
-        private int elementLine = ViewsSettings.elementLine;
+        DBContext db = new DBContext();
+        int elementPage = ViewsSettings.elementPage;
+        int elementLine = ViewsSettings.elementLine;
 
         public ActionResult Index(int? id)
         {
@@ -23,7 +22,7 @@ namespace MVCsoftStorage.Controllers
                             orderby c.id descending
                             select c).Skip(paginat.firstElement).Take(elementPage);
 
-            List<prePost> content = request.ToList();
+            List<preposts> content = request.ToList();
             ListContent listContent = new ListContent(content);
 
             ViewBag.Preposts = listContent.GetCardPage(elementLine);

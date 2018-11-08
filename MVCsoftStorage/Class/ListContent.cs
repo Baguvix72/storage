@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MVCsoftStorage.Models;
 
 namespace MVCsoftStorage.Class
 {
     public class ListContent
     {
-        private List<prePost> content;
-        private int countPost;
+        List<preposts> content;
+        int countPost;
 
-        public ListContent(List<prePost> _content)
+        public ListContent(List<preposts> _content)
         {
             content = _content;
             countPost = _content.Count();
         }
 
-        private int GetCountLine(int elementsInLine)
+        int GetCountLine(int elementsInLine)
         {
             int countLine = countPost / elementsInLine;
             if (countPost % elementsInLine != 0)
@@ -25,16 +24,16 @@ namespace MVCsoftStorage.Class
             return countLine;
         }
 
-        public List<List<prePost>> GetCardPage(int elementsInLine)
+        public List<List<preposts>> GetCardPage(int elementsInLine)
         {
             int indexPost = 0;
             int countBlock = GetCountLine(elementsInLine);
 
-            List<List<prePost>> pageBlock = new List<List<prePost>>();
+            List<List<preposts>> pageBlock = new List<List<preposts>>();
 
             for (int i = 0; i < countBlock; i++)
             {
-                List<prePost> blockPost = new List<prePost>();
+                List<preposts> blockPost = new List<preposts>();
                 for (int j = 0; j < elementsInLine; j++)
                 {
                     if (indexPost == countPost)
@@ -44,7 +43,6 @@ namespace MVCsoftStorage.Class
                 }
                 pageBlock.Add(blockPost);
             }
-
             return pageBlock;
         }
     }
