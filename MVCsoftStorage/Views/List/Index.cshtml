@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<nav aria-label="navigation page block" class="mt-2">
+<nav aria-label="navigation page block" class="my-3">
     <ul class="pagination justify-content-center">
         <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
         @foreach (var item in ViewBag.Pagination.pageNumberList)
@@ -43,7 +43,7 @@
         </div>
     </div>
 }
-<nav aria-label="navigation page block" class="mt-2">
+<nav aria-label="navigation page block" class="my-3">
     <ul class="pagination justify-content-center">
         <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
         @foreach (var item in ViewBag.Pagination.pageNumberList)

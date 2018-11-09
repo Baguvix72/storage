@@ -7,6 +7,7 @@
     @Styles.Render("~/static/bootstrap/css/bootstrap.min.css")
     @Styles.Render("~/static/bootstrap/css/navbar-top-fixed.css")
     @Styles.Render("~/static/List.css")
+    @Styles.Render("~/static/Item.css")
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow-lg">
@@ -39,9 +40,8 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-
-        <footer>
+        <footer class="mt-4">
+            <hr />
             <p>@DateTime.Now.Year - PASHKARKASTAN Studio</p>
         </footer>
     </div>

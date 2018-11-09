@@ -1,0 +1,33 @@
+﻿body {
+    background: aliceblue;
+}
+
+.itemIMG {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    -webkit-filter: brightness(250%);
+    filter: brightness(250%);
+    -webkit-filter: contrast(125%);
+    filter: contrast(125%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemIMGWrapper {
+    background: linear-gradient(to right, #000000 0%,#46869a 50%,#000000 100%);
+}
+
+.imgWBlock {
+    padding-top: 20px;
+    padding-bottom: 55px;
+}
+
+.description {
+    text-align: justify;
+}
+
+.spoilerItem{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

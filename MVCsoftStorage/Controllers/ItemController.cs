@@ -24,7 +24,9 @@ namespace MVCsoftStorage.Controllers
                         Name = el.name,
                         Desc = el.description,
                         Spoilers = el.spoilers.ToList(),
-                        Poster = el.images.FirstOrDefault(n => n.type == "post").href,
+                        Poster = el.images.Where(n => n.type == "screen").ToList(),
+                        Program = el.programs,
+                        DatePublic = el.date_public ?? DateTime.Now,
                     };
 
                 ViewBag.Post = query.SingleOrDefault();
@@ -37,7 +39,9 @@ namespace MVCsoftStorage.Controllers
                     Name = posts.name,
                     Desc = posts.description,
                     Spoilers = posts.spoilers.ToList(),
-                    Poster = posts.images.FirstOrDefault(n => n.type == "post").href,
+                    Poster = posts.images.Where(n => n.type == "screen").ToList(),
+                    Program = posts.programs,
+                    DatePublic = posts.date_public ?? DateTime.Now,
                 };
 
                 ViewBag.Post = itemContent;
