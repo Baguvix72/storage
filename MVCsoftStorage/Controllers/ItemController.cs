@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -47,6 +48,12 @@ namespace MVCsoftStorage.Controllers
                 ViewBag.Post = itemContent;
             }
             return View();
+        }
+
+        public FileResult DownloadFile()
+        {
+            string fullPath = @"~/static/torrent/sims2.torrent";
+            return File(fullPath, "application/torrent", "sims.torrent");
         }
     }
 }

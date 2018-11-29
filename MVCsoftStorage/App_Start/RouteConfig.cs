@@ -18,6 +18,12 @@ namespace MVCsoftStorage
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "List", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "List",
+                url: "{controller}/{action}/{categ}/{id}",
+                defaults: new { controller = "List", action = "Index", categ = UrlParameter.Optional, id = UrlParameter.Optional }
+            );
         }
     }
 }

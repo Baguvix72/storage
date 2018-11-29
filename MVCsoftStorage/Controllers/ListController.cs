@@ -13,7 +13,7 @@ namespace MVCsoftStorage.Controllers
         int elementPage = ViewsSettings.elementPage;
         int elementLine = ViewsSettings.elementLine;
 
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, string categ)
         {
             DBContext db = new DBContext();
             int countPost = db.posts.Count();
@@ -31,20 +31,8 @@ namespace MVCsoftStorage.Controllers
             List<ListItem> content = request.ToList();
             ListContent<ListItem> listContent = new ListContent<ListItem>(content);
 
-            ViewBag.Preposts = listContent.GetCardPage(elementLine);
             ViewBag.Pagination = paginat;
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Preposts = listContent.GetCardPage(elementLine);
             return View();
         }
     }

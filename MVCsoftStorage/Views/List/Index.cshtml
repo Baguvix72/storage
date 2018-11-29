@@ -2,23 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<nav aria-label="navigation page block" class="my-3">
-    <ul class="pagination justify-content-center">
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
-        @foreach (var item in ViewBag.Pagination.pageNumberList)
-        {
-            if (ViewBag.Pagination.CurrentPage == item)
-            {
-                <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
-            }
-            else
-            {
-                <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
-            }
-        }
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
-    </ul>
-</nav>
+@Html.Action("Index", "Pagination", new { pagintaion = ViewBag.Pagination })
+
 @foreach (var list in ViewBag.Preposts)
 {
     <div class="container mt-2">
@@ -43,20 +28,5 @@
         </div>
     </div>
 }
-<nav aria-label="navigation page block" class="my-3">
-    <ul class="pagination justify-content-center">
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = 1 })">Первая</a></li>
-        @foreach (var item in ViewBag.Pagination.pageNumberList)
-        {
-            if (ViewBag.Pagination.CurrentPage == item)
-            {
-                <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
-            }
-            else
-            {
-                <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = item })">@item</a></li>
-            }
-        }
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
-    </ul>
-</nav>
+
+@Html.Action("Index", "Pagination", new { pagintaion = ViewBag.Pagination })
