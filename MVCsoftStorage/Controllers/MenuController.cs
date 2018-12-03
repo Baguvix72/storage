@@ -9,7 +9,7 @@ namespace MVCsoftStorage.Controllers
     public class MenuController : Controller
     {
         // GET: Menu
-        public ActionResult Index()
+        public ActionResult Index(string categ)
         {
             DBContext db = new DBContext();
 
@@ -17,6 +17,10 @@ namespace MVCsoftStorage.Controllers
                 from el in db.categories
                 select el;
 
+            if (categ == null)
+                categ = "all";
+
+            ViewBag.Active = categ;
             ViewBag.Categories = query.ToList();
 
             return PartialView("_Menu");

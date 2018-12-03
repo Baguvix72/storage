@@ -1,5 +1,5 @@
 ﻿<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow-lg">
-    <a class="navbar-brand" href="@Url.RouteUrl("Default", new {controller = "List" })">.storage</a>
+    <a class="navbar-brand" href="@Url.RouteUrl("Default", new { controller = "List" })">.storage</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,11 +10,25 @@
                     Категории
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="@Url.RouteUrl("Default", new {controller = "List" })">Все</a>
+                    @if (ViewBag.Active == "all")
+                    {
+                        <a class="dropdown-item active" href="@Url.RouteUrl("Default", new { controller = "List" })">Все</a>
+                    }
+                    else
+                    {
+                        <a class="dropdown-item" href="@Url.RouteUrl("Default", new { controller = "List" })">Все</a>
+                    }
                     <div class="dropdown-divider"></div>
                     @foreach (var item in ViewBag.Categories)
                     {
-                        <a class="dropdown-item" href="@Url.RouteUrl("List", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
+                        if (ViewBag.Active == item.slug_name)
+                        {
+                            <a class="dropdown-item active" href="@Url.RouteUrl("List", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-item" href="@Url.RouteUrl("List", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
+                        }
                     }
                 </div>
             </li>

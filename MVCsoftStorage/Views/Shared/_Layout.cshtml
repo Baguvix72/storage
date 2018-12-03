@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Storage</title>
     @Styles.Render("~/static/bootstrap/css/bootstrap.min.css")
     @Styles.Render("~/static/bootstrap/css/navbar-top-fixed.css")
     @Styles.Render("~/static/List.css")
     @Styles.Render("~/static/Item.css")
 </head>
 <body>
-    @Html.Action("Index", "Menu")
+    @Html.Action("Index", "Menu", new { categ =  ViewContext.RouteData.Values["categ"]} )
     <div class="container body-content">
         @RenderBody()
         <footer class="mt-4">
