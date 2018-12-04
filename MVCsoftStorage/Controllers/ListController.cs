@@ -17,22 +17,22 @@ namespace MVCsoftStorage.Controllers
         {
             DBContext db = new DBContext();
 
-            if (categ != null)
-            {
-                var request = from el in db.program_categories
-                              where el.categories.slug_name == categ
-                              select el;
+            //if (categ != null)
+            //{
+            //    var request = from el in db.program_categories
+            //                  where el.categories.slug_name == categ
+            //                  select el;
 
-                List<program_categories> programCategories = request.ToList();
-            }
+            //    List<program_categories> programCategories = request.ToList();
+            //}
 
             int countPost = db.posts.Count();
             Pagintation paginat = new Pagintation(id, countPost);
 
             var request = (from c in db.posts
                            orderby c.id descending
-                           join ListCateg in programCategories
-                           on c.programs equals ListCateg.programs
+                           //join ListCateg in programCategories
+                           //on c.programs equals ListCateg.programs
                            select new ListItem
                            {
                                Name = c.name,
