@@ -69,6 +69,8 @@ namespace MVCsoftStorage.Class
             }
         }
 
+        public string Category { get; set; }
+
         int addNumberBegin(int module, int counter, int maxNumber)
         {
             while (CurrentPage - module > 0 && counter < maxNumber)
