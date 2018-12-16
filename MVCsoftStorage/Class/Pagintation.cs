@@ -14,9 +14,10 @@ namespace MVCsoftStorage.Class
         int paginatMax = ViewsSettings.countNumberPagin;
         List<int> pageList;
 
-        public Pagintation(int? newPage, int _countPost)
+        public Pagintation(int? newPage, int _countPost, string _category)
         {
             countPost = _countPost;
+            Category = _category;
 
             MaxPage = 0;    // можно указывать что угодно, значение вычисляется самостоятельно
             CurrentPage = newPage ?? 1;
@@ -69,7 +70,7 @@ namespace MVCsoftStorage.Class
             }
         }
 
-        public string Category { get; set; }
+        public string Category { get; private set; }
 
         int addNumberBegin(int module, int counter, int maxNumber)
         {

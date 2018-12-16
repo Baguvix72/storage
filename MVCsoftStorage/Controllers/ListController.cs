@@ -16,8 +16,9 @@ namespace MVCsoftStorage.Controllers
         public ActionResult Index(int? id, string categ)
         {
             DBContext db = new DBContext();
+            Pagintation mainPagination = new Pagintation(id, 0, categ);
 
-            if (categ != null)
+            if (categ != null && categ != "all")
             {
                 var pre_request = from el in db.programs
                                   where el.program_categories.Any(n => n.categories.slug_name == categ)
@@ -28,8 +29,7 @@ namespace MVCsoftStorage.Controllers
                 int countPost = (from el in db.posts
                                    join el2 in programCat on el.program_id equals el2
                                    select el).Count();
-                Pagintation paginat = new Pagintation(id, countPost);
-                paginat.Category = categ;
+                mainPagination = new Pagintation(id, countPost, categ);
 
                 var request = (from c in db.posts
                                join c2 in programCat on c.program_id equals c2
@@ -41,19 +41,17 @@ namespace MVCsoftStorage.Controllers
                                    Poster = c.images.Where(image => image.type == "post")
                                                     .Select(image => image.href)
                                                     .FirstOrDefault(),
-                               }).Skip(paginat.firstElement).Take(elementPage);
+                               }).Skip(mainPagination.firstElement).Take(elementPage);
 
                 List<ListItem> content = request.ToList();
                 ListContent<ListItem> listContent = new ListContent<ListItem>(content);
 
-                ViewBag.Pagination = paginat;
                 ViewBag.Preposts = listContent.GetCardPage(elementLine);
             }
             else
             {
                 int countPost = db.posts.Count();
-                Pagintation paginat = new Pagintation(id, countPost);
-                paginat.Category = "all";
+                mainPagination = new Pagintation(id, countPost, "all");
 
                 var request = (from c in db.posts
                                orderby c.id descending
@@ -62,14 +60,15 @@ namespace MVCsoftStorage.Controllers
                                    Name = c.name,
                                    Id = c.id,
                                    Poster = c.images.FirstOrDefault(n => n.type == "post").href,
-                               }).Skip(paginat.firstElement).Take(elementPage);
+                               }).Skip(mainPagination.firstElement).Take(elementPage);
 
                 List<ListItem> content = request.ToList();
                 ListContent<ListItem> listContent = new ListContent<ListItem>(content);
 
-                ViewBag.Pagination = paginat;
                 ViewBag.Preposts = listContent.GetCardPage(elementLine);
             }
+
+            ViewBag.Pagination = mainPagination;
             return View();
         }
     }
