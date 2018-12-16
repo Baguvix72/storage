@@ -1,17 +1,20 @@
-﻿<nav aria-label="navigation page block" class="my-3">
-    <ul class="pagination justify-content-center">
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = 1 })">Первая</a></li>
-        @foreach (var item in ViewBag.Pagination.pageNumberList)
-        {
-            if (ViewBag.Pagination.CurrentPage == item)
+﻿@if (ViewBag.Pagination.MaxPage > 1)
+{
+    <nav aria-label="navigation page block" class="my-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = 1 })">Первая</a></li>
+            @foreach (var item in ViewBag.Pagination.pageNumberList)
             {
-                <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = item })">@item</a></li>
+                if (ViewBag.Pagination.CurrentPage == item)
+                {
+                    <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = item })">@item</a></li>
+                }
+                else
+                {
+                    <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = item })">@item</a></li>
+                }
             }
-            else
-            {
-                <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = item })">@item</a></li>
-            }
-        }
-        <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
-    </ul>
-</nav>
+            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("List", new { controller = "List", categ = ViewBag.Pagination.Category, id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
+        </ul>
+    </nav>
+}
