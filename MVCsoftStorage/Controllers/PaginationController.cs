@@ -12,8 +12,7 @@ namespace MVCsoftStorage.Controllers
         // GET: Pagination
         public ActionResult Index(PagintationModel pagintaion)
         {
-            ViewBag.Pagination = pagintaion;
-            return PartialView("_Pagination");
+            return PartialView("_Pagination", pagintaion);
         }
     }
 }

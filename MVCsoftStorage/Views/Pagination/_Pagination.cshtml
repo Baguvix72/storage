@@ -1,20 +1,20 @@
-﻿@if (ViewBag.Pagination.MaxPage > 1)
+﻿@if (Model.MaxPage > 1)
 {
     <nav aria-label="navigation page block" class="my-3">
         <ul class="pagination justify-content-center">
-            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", Action = "All", id = 1 })">Первая</a></li>
-            @foreach (var item in ViewBag.Pagination.PaginatorTable)
+            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = 1 })">Первая</a></li>
+            @foreach (var item in Model.PaginatorTable)
             {
-                if (ViewBag.Pagination.CurrentPage == item)
+                if (Model.CurrentPage == item)
                 {
-                    <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", Action = "All", id = item })">@item</a></li>
+                    <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = item })">@item</a></li>
                 }
                 else
                 {
-                    <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", Action = "All", id = item })">@item</a></li>
+                    <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = item })">@item</a></li>
                 }
             }
-            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", Action = "All", id = ViewBag.Pagination.MaxPage })">Последняя (@ViewBag.Pagination.MaxPage)</a></li>
+            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = Model.MaxPage })">Последняя (@Model.MaxPage)</a></li>
         </ul>
     </nav>
 }
