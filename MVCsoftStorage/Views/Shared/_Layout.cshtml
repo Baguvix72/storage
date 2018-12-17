@@ -4,10 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Storage</title>
-    @Styles.Render("~/static/bootstrap/css/bootstrap.min.css")
-    @Styles.Render("~/static/bootstrap/css/navbar-top-fixed.css")
-    @Styles.Render("~/static/List.css")
-    @Styles.Render("~/static/Item.css")
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     @Html.Action("Index", "Menu", new { categ =  ViewContext.RouteData.Values["categ"]} )
@@ -15,12 +12,11 @@
         @RenderBody()
         <footer class="mt-4">
             <hr />
-            <p>@DateTime.Now.Year - PASHKARKASTAN Studio</p>
+            <p>&copy; @DateTime.Now.Year - PASHKARKASTAN Studio</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/static/bootstrap/js/jquery-3.3.1.slim.min.js")
-    @Scripts.Render("~/static/bootstrap/js/popper.min.js")
-    @Scripts.Render("~/static/bootstrap/js/bootstrap.min.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>

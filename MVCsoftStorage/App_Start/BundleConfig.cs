@@ -25,7 +25,10 @@ namespace MVCsoftStorage
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/CustomStyle/navbar-top-fixed.css",
+                      "~/Content/CustomStyle/Item.css",
+                      "~/Content/CustomStyle/List.css"));
         }
     }
 }
