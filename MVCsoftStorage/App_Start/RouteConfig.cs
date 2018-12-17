@@ -16,7 +16,7 @@ namespace MVCsoftStorage
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "List", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "List", action = "All", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

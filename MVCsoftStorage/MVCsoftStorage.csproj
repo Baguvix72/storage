@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PaginationController.cs" />
+    <Compile Include="CustomClass\ViewsSettings.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +211,9 @@
     <Compile Include="images.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListProgramModel.cs" />
+    <Compile Include="Models\PagintationModel.cs" />
+    <Compile Include="Models\ProgramModel.cs" />
     <Compile Include="platforms.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -330,7 +334,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\List\All.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -342,13 +346,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="static\torrent\sims2.torrent" />
-    <Content Include="Views\Shared\_Menu.cshtml" />
-    <Content Include="Views\Shared\_Pagination.cshtml" />
+    <Content Include="Views\Menu\_Menu.cshtml" />
+    <Content Include="Views\Pagination\_Pagination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Menu\" />
-    <Folder Include="Views\Pagination\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

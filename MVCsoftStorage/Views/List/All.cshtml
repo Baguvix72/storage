@@ -4,11 +4,11 @@
 
 @Html.Action("Index", "Pagination", new { pagintaion = ViewBag.Pagination })
 
-@foreach (var list in ViewBag.Preposts)
+@foreach (var Lines in Model.Get)
 {
     <div class="container mt-2">
         <div class="card-deck">
-            @foreach (var item in list)
+            @foreach (var item in Lines)
             {
                 <div class="card text-center shadow-lg">
                     <img class="card-img-top listIMG align-self-center image-wrap" src="@item.Poster" alt="img @item.Name">
