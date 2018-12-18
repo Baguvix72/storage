@@ -2,19 +2,35 @@
 {
     <nav aria-label="navigation page block" class="my-3">
         <ul class="pagination justify-content-center">
-            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = 1 })">Первая</a></li>
+            <li class="page-item shadow-lg">
+                <a class="page-link" href="@Url.RouteUrl(Model.Controller, new { controller = "List", categ = Model.Category, id = 1 })">
+                    Первая
+                </a>
+            </li>
             @foreach (var item in Model.PaginatorTable)
             {
                 if (Model.CurrentPage == item)
                 {
-                    <li class="page-item active shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = item })">@item</a></li>
+                    <li class="page-item active shadow-lg">
+                        <a class="page-link" href="@Url.RouteUrl(Model.Controller, new { controller = "List", categ = Model.Category, id = item })">
+                            @item
+                        </a>
+                    </li>
                 }
                 else
                 {
-                    <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = item })">@item</a></li>
+                    <li class="page-item shadow-lg">
+                        <a class="page-link" href="@Url.RouteUrl(Model.Controller, new { controller = "List", categ = Model.Category, id = item })">
+                            @item
+                        </a>
+                    </li>
                 }
             }
-            <li class="page-item shadow-lg"><a class="page-link" href="@Url.RouteUrl("Default", new { controller = "List", id = Model.MaxPage })">Последняя (@Model.MaxPage)</a></li>
+            <li class="page-item shadow-lg">
+                <a class="page-link" href="@Url.RouteUrl(Model.Controller, new { controller = "List", categ = Model.Category, id = Model.MaxPage })">
+                    Последняя (@Model.MaxPage)
+                </a>
+            </li>
         </ul>
     </nav>
 }

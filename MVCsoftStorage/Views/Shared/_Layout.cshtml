@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    @Html.Action("Index", "Menu", new { categ =  ViewContext.RouteData.Values["categ"]} )
+    @Html.Action("Index", "Menu", new { categ = ViewContext.RouteData.Values["categ"] } )
     <div class="container body-content">
         @RenderBody()
         <footer class="mt-4">

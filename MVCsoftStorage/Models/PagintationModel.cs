@@ -27,6 +27,8 @@ namespace MVCsoftStorage.Models
         public int MaxPage { get; private set; }
         public int CurrentPage { get; private set; }
         public List<int> PaginatorTable { get; private set; } = new List<int>();
+        public string Category { get; set; } = null;
+        public string Controller { get; set; } = "Default";
         #endregion
 
         #region Private Method

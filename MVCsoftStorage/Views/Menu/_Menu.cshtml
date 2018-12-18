@@ -1,5 +1,5 @@
 ﻿<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow-lg">
-    <a class="navbar-brand" href="@Url.RouteUrl("List", new { controller = "List" })">.storage</a>
+    <a class="navbar-brand" href="@Url.RouteUrl("Default", new { controller = "List" } )">.storage</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,22 +12,22 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @if (ViewBag.Active == "all")
                     {
-                        <a class="dropdown-item active" href="@Url.RouteUrl("List", new { controller = "List" })">Все</a>
+                        <a class="dropdown-item active" href="@Url.RouteUrl("Default", new { controller = "List" } )">Все</a>
                     }
                     else
                     {
-                        <a class="dropdown-item" href="@Url.RouteUrl("List", new { controller = "List" })">Все</a>
+                        <a class="dropdown-item" href="@Url.RouteUrl("Default", new { controller = "List" } )">Все</a>
                     }
                     <div class="dropdown-divider"></div>
                     @foreach (var item in ViewBag.Categories)
                     {
                         if (ViewBag.Active == item.slug_name)
                         {
-                            <a class="dropdown-item active" href="@Url.RouteUrl("List", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
+                            <a class="dropdown-item active" href="@Url.RouteUrl("ListFilter", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
                         }
                         else
                         {
-                            <a class="dropdown-item" href="@Url.RouteUrl("List", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
+                            <a class="dropdown-item" href="@Url.RouteUrl("ListFilter", new { controller = "List", categ = item.slug_name, id = 1 })">@item.ru_name</a>
                         }
                     }
                 </div>
@@ -36,9 +36,10 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0" method="post">
+        @using (Html.BeginForm("Search", "List", FormMethod.Get, new { @class = "form-inline mt-2 mt-md-0" }))
+        {
             <input class="form-control mr-sm-2" type="text" placeholder="Имя программы..." aria-label="Search" name="search" id="search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-        </form>
+        }
     </div>
 </nav>

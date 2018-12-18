@@ -20,9 +20,9 @@ namespace MVCsoftStorage
             );
 
             routes.MapRoute(
-                name: "List",
+                name: "ListFilter",
                 url: "{controller}/{action}/{categ}/{id}",
-                defaults: new { controller = "List", action = "Index", categ = UrlParameter.Optional, id = UrlParameter.Optional }
+                defaults: new { controller = "List", action = "Filter", categ = "all", id = UrlParameter.Optional }
             );
         }
     }
