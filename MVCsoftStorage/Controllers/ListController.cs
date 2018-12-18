@@ -79,20 +79,21 @@ namespace MVCsoftStorage.Controllers
         {
             DBContext db = new DBContext();
 
-            var pre_request = from el in db.programs
+            var requestProgram = from el in db.programs
                               where el.name.Contains(search)
-                              select el.name;
-
-            var programFound = pre_request.ToList();
+                              select el.id;
+            var programFound = requestProgram.ToList();
 
             int countPost = (from el in db.posts
-                             join el2 in programFound on el.programs.name equals el2
+                             join el2 in programFound on el.program_id equals el2
                              select el).Count();
 
             PagintationModel Pagination = new PagintationModel(id, countPost);
+            Pagination.Action = "Search";
+            Pagination.Search = search;
 
             var request = (from c in db.posts
-                           join c2 in programFound on c.programs.name equals c2
+                           join c2 in programFound on c.program_id equals c2
                            orderby c.id descending
                            select new ProgramModel
                            {
@@ -104,6 +105,7 @@ namespace MVCsoftStorage.Controllers
                            }).Skip(Pagination.FirstElement).Take(ViewsSettings.elementPage);
 
             ListProgramModel content = new ListProgramModel(request.ToList());
+
             ViewBag.Pagination = Pagination;
 
             return View("All", content);

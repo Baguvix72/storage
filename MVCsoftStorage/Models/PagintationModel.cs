@@ -29,6 +29,8 @@ namespace MVCsoftStorage.Models
         public List<int> PaginatorTable { get; private set; } = new List<int>();
         public string Category { get; set; } = null;
         public string Controller { get; set; } = "Default";
+        public string Action { get; set; } = null;
+        public string Search { get; set; } = null;
         #endregion
 
         #region Private Method
