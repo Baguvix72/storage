@@ -4,49 +4,39 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVCsoftStorage.Class;
+using MVCsoftStorage.Models;
 
 namespace MVCsoftStorage.Controllers
 {
     public class ItemController : Controller
     {
-        public ActionResult Index(int? id)
+        public ActionResult Program(int? id)
         {
             DBContext db = new DBContext();
-            int idPost = id ?? -1;
 
-            if (idPost != -1)
-            {
-                var query =
-                    from el in db.posts
-                    where el.id == idPost && el.visible == 1 && el.date_public < DateTime.Now
-                    select new ItemContent
-                    {
-                        Name = el.name,
-                        Desc = el.description,
-                        Spoilers = el.spoilers.ToList(),
-                        Poster = el.images.Where(n => n.type == "screen").ToList(),
-                        Program = el.programs,
-                        DatePublic = el.date_public ?? DateTime.Now,
-                    };
+            int currentId = id ?? 0;
 
-                ViewBag.Post = query.SingleOrDefault();
-            }
-            else
-            {
-                posts posts = db.posts.OrderByDescending(n => n.id).First();
-                ItemContent itemContent = new ItemContent
+            List<int> postsId = (from el in db.posts
+                                 select el.id).ToList();
+
+            if (!postsId.Contains(currentId))
+                return View("Error");
+
+            var query =
+                from el in db.posts
+                where el.id == currentId && el.visible == 1 && el.date_public < DateTime.Now
+                select new ProgramModel
                 {
-                    Name = posts.name,
-                    Desc = posts.description,
-                    Spoilers = posts.spoilers.ToList(),
-                    Poster = posts.images.Where(n => n.type == "screen").ToList(),
-                    Program = posts.programs,
-                    DatePublic = posts.date_public ?? DateTime.Now,
+                    Name = el.name,
+                    Desc = el.description,
+                    Spoilers = el.spoilers.ToList(),
+                    Imgs = el.images.Where(n => n.type == "screen").ToList(),
+                    Program = el.programs,
+                    DatePublic = el.date_public ?? DateTime.Now,
                 };
 
-                ViewBag.Post = itemContent;
-            }
+            ViewBag.Post = query.SingleOrDefault();
+
             return View();
         }
 

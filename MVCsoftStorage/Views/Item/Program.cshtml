@@ -8,7 +8,7 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 @{ index = 1;}
-                @foreach (var item in ViewBag.Post.Poster)
+                @foreach (var item in ViewBag.Post.Imgs)
                 {
                     if (index == 1)
                     {
@@ -24,7 +24,7 @@
             </ol>
             <div class="carousel-inner itemIMGWrapper">
                 @{ index = 1;}
-                @foreach (var item in ViewBag.Post.Poster)
+                @foreach (var item in ViewBag.Post.Imgs)
                 {
                     if (index == 1)
                     {
