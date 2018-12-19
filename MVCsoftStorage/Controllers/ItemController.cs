@@ -15,16 +15,16 @@ namespace MVCsoftStorage.Controllers
             DBContext db = new DBContext();
 
             int currentId = id ?? 0;
+            int postsId = (from el in db.posts
+                           where el.id == currentId
+                           select el.id).SingleOrDefault();
 
-            List<int> postsId = (from el in db.posts
-                                 select el.id).ToList();
-
-            if (!postsId.Contains(currentId))
+            if (postsId == 0)
                 return View("Error");
 
             var query =
                 from el in db.posts
-                where el.id == currentId && el.visible == 1 && el.date_public < DateTime.Now
+                where el.id == postsId && el.visible == 1 && el.date_public < DateTime.Now
                 select new ProgramModel
                 {
                     Name = el.name,
@@ -35,9 +35,9 @@ namespace MVCsoftStorage.Controllers
                     DatePublic = el.date_public ?? DateTime.Now,
                 };
 
-            ViewBag.Post = query.SingleOrDefault();
+            var post = query.Single();
 
-            return View();
+            return View(post);
         }
 
         public FileResult DownloadFile()

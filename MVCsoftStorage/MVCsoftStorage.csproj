@@ -345,6 +345,8 @@
     <Content Include="Views\Menu\_Menu.cshtml" />
     <Content Include="Views\Pagination\_Pagination.cshtml" />
     <Content Include="Views\Item\ImgSlider.cshtml" />
+    <Content Include="Views\Item\SpoilersItem.cshtml" />
+    <Content Include="Views\Item\UserAgreement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

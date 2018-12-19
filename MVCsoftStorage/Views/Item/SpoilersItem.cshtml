@@ -1,0 +1,21 @@
+﻿@{ int index = 1; }
+@foreach (var item in Model.Spoilers)
+{
+    <div class="accordion spoilerItem" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="@string.Format("heading{0}", index)">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="@string.Format("#collapse{0}", index)" aria-expanded="false" aria-controls="collapseOne">
+                        @Html.Raw(item.name)
+                    </button>
+                </h5>
+            </div>
+            <div id="@string.Format("collapse{0}", index)" class="collapse" aria-labelledby="@string.Format("heading{0}", index)" data-parent="#accordionExample">
+                <div class="card-body">
+                    @Html.Raw(item.content)
+                    @{ index++;}
+                </div>
+            </div>
+        </div>
+    </div>
+}

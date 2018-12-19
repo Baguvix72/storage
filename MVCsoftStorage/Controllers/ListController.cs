@@ -80,8 +80,8 @@ namespace MVCsoftStorage.Controllers
             DBContext db = new DBContext();
 
             var requestProgram = from el in db.programs
-                              where el.name.Contains(search)
-                              select el.id;
+                                 where el.name.Contains(search)
+                                 select el.id;
             var programFound = requestProgram.ToList();
 
             int countPost = (from el in db.posts
