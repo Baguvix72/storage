@@ -8,12 +8,14 @@ namespace MVCsoftStorage.Models
 {
     public class ListProgramModel
     {
-        public ListProgramModel(List<ProgramModel> content)
+        public ListProgramModel(List<ProgramModel> content, PagintationModel paginat)
         {
             MakeList(content);
+            Pagin = paginat;
         }
 
         public List<List<ProgramModel>> Get { get; private set; } = new List<List<ProgramModel>>();
+        public PagintationModel Pagin { get; private set; }
 
         int GetCountLine(int count)
         {

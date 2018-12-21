@@ -4,7 +4,7 @@
 
 <div class="container mt-2">
     <div class="card mb-3 shadow-lg">
-        @Html.Partial("ImgSlider", new { Imgs = Model.Imgs })
+        @Html.Partial("ImgSlider")
         <div class="card-body">
             <h4 class="card-title"><b>@Model.Name</b></h4>
             <p class="card-text">
@@ -18,9 +18,9 @@
                     @Html.Raw(Model.Desc)
                 </div>
             </div>
-            @Html.Partial("SpoilersItem", new { Spoilers = Model.Spoilers })
+            @Html.Partial("SpoilersItem")
         </div>
     </div>
-    @Html.Partial("UserAgreement", new { DatePublic = Model.DatePublic, Program = Model.Program })
+    @Html.Partial("UserAgreement")
 </div>
 

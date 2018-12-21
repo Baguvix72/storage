@@ -16,7 +16,7 @@ namespace MVCsoftStorage.Controllers
             DBContext db = new DBContext();
 
             int countPost = db.posts.Count();
-            PagintationModel Pagination = new PagintationModel(id, countPost);
+            PagintationModel pagination = new PagintationModel(id, countPost);
 
             var request = (from c in db.posts
                            orderby c.id descending
@@ -25,10 +25,9 @@ namespace MVCsoftStorage.Controllers
                                Name = c.name,
                                Id = c.id,
                                Poster = c.images.FirstOrDefault(n => n.type == "post").href,
-                           }).Skip(Pagination.FirstElement).Take(ViewsSettings.elementPage);
+                           }).Skip(pagination.FirstElement).Take(ViewsSettings.elementPage);
 
-            ListProgramModel content = new ListProgramModel(request.ToList());
-            ViewBag.Pagination = Pagination;
+            ListProgramModel content = new ListProgramModel(request.ToList(), pagination);
 
             return View(content);
         }
@@ -53,9 +52,9 @@ namespace MVCsoftStorage.Controllers
                              join el2 in programCat on el.program_id equals el2
                              select el).Count();
 
-            PagintationModel Pagination = new PagintationModel(id, countPost);
-            Pagination.Controller = "ListFilter";
-            Pagination.Category = categ;
+            PagintationModel pagination = new PagintationModel(id, countPost);
+            pagination.Controller = "ListFilter";
+            pagination.Category = categ;
 
             var request = (from c in db.posts
                            join c2 in programCat on c.program_id equals c2
@@ -67,11 +66,10 @@ namespace MVCsoftStorage.Controllers
                                Poster = c.images.Where(image => image.type == "post")
                                                 .Select(image => image.href)
                                                 .FirstOrDefault(),
-                           }).Skip(Pagination.FirstElement).Take(ViewsSettings.elementPage);
+                           }).Skip(pagination.FirstElement).Take(ViewsSettings.elementPage);
 
-            ListProgramModel content = new ListProgramModel(request.ToList());
+            ListProgramModel content = new ListProgramModel(request.ToList(), pagination);
 
-            ViewBag.Pagination = Pagination;
             return View("All", content);
         }
 
@@ -88,9 +86,9 @@ namespace MVCsoftStorage.Controllers
                              join el2 in programFound on el.program_id equals el2
                              select el).Count();
 
-            PagintationModel Pagination = new PagintationModel(id, countPost);
-            Pagination.Action = "Search";
-            Pagination.Search = search;
+            PagintationModel pagination = new PagintationModel(id, countPost);
+            pagination.Action = "Search";
+            pagination.Search = search;
 
             var request = (from c in db.posts
                            join c2 in programFound on c.program_id equals c2
@@ -102,11 +100,9 @@ namespace MVCsoftStorage.Controllers
                                Poster = c.images.Where(image => image.type == "post")
                                                 .Select(image => image.href)
                                                 .FirstOrDefault(),
-                           }).Skip(Pagination.FirstElement).Take(ViewsSettings.elementPage);
+                           }).Skip(pagination.FirstElement).Take(ViewsSettings.elementPage);
 
-            ListProgramModel content = new ListProgramModel(request.ToList());
-
-            ViewBag.Pagination = Pagination;
+            ListProgramModel content = new ListProgramModel(request.ToList(), pagination);
 
             return View("All", content);
         }

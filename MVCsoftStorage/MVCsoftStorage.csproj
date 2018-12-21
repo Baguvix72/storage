@@ -184,7 +184,6 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\PaginationController.cs" />
     <Compile Include="CustomClass\ViewsSettings.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -346,6 +345,7 @@
     <Content Include="Views\Item\ImgSlider.cshtml" />
     <Content Include="Views\Item\SpoilersItem.cshtml" />
     <Content Include="Views\Item\UserAgreement.cshtml" />
+    <Content Include="Views\Shared\Pagination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
