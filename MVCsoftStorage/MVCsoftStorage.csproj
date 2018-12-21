@@ -346,6 +346,7 @@
     <Content Include="Views\Item\SpoilersItem.cshtml" />
     <Content Include="Views\Item\UserAgreement.cshtml" />
     <Content Include="Views\Shared\Pagination.cshtml" />
+    <Content Include="Views\Item\Tabs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
