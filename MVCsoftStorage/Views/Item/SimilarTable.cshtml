@@ -1,0 +1,20 @@
+﻿<table class="table table-borderless table-striped">
+    <tbody>
+        @foreach (var item in Model.SimilarPost)
+        {
+            <tr>
+                <td class="align-middle">
+                    <a href="@Url.RouteUrl("Default", new {controller = "Item",
+                                                           action = "Program",
+                                                           id = item.Id })"
+                    >
+                        @item.Name
+                    </a>
+                </td>
+                <td class="d-flex justify-content-end">
+                    <a href="#" class="btn btn-secondary">Скачать</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

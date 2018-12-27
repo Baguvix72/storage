@@ -206,6 +206,7 @@
     <Compile Include="images.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\ListProgramModel.cs" />
     <Compile Include="Models\PagintationModel.cs" />
     <Compile Include="Models\ProgramModel.cs" />
@@ -347,6 +348,7 @@
     <Content Include="Views\Item\UserAgreement.cshtml" />
     <Content Include="Views\Shared\Pagination.cshtml" />
     <Content Include="Views\Item\Tabs.cshtml" />
+    <Content Include="Views\Item\SimilarTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

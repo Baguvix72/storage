@@ -35,9 +35,24 @@ namespace MVCsoftStorage.Controllers
                     DatePublic = el.date_public ?? DateTime.Now,
                 };
 
-            var post = query.Single();
+            ProgramModel post = query.Single();
 
-            return View(post);
+            List<ProgramModel> similarPostRequest = 
+                                     (from el in post.Program.posts
+                                      where el.id != postsId
+                                      select new ProgramModel
+                                      {
+                                          Name = el.name,
+                                          Id = el.id
+                                      }).Skip(0).Take(11).ToList();
+
+            ItemModel itemModel = new ItemModel
+            {
+                CurrPost = post,
+                SimilarPost = similarPostRequest
+            };
+
+            return View(itemModel);
         }
 
         public FileResult DownloadFile()

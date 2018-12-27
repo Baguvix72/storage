@@ -1,21 +1,21 @@
 ﻿@{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.CurrPost.Name;
 }
 
 <div class="container mt-2">
     <div class="card mb-3 shadow-lg">
         @Html.Partial("ImgSlider")
         <div class="card-body">
-            <h4 class="card-title"><b>@Model.Name</b></h4>
+            <h4 class="card-title"><b>@Model.CurrPost.Name</b></h4>
             <p class="card-text">
-                <b>Официальный сайт: </b><a href="@Model.Program.off_site" target="_blank">ссылка</a>
+                <b>Официальный сайт: </b><a href="@Model.CurrPost.Program.off_site" target="_blank">ссылка</a>
                 <br>
-                <b>Платформа: </b><a href="@Model.Program.platforms.off_site" target="_blank">@Model.Program.platforms.name</a>
+                <b>Платформа: </b><a href="@Model.CurrPost.Program.platforms.off_site" target="_blank">@Model.CurrPost.Program.platforms.name</a>
             </p>
             <div class="card-text">
                 <b>Описание:</b>
                 <div class="description">
-                    @Html.Raw(Model.Desc)
+                    @Html.Raw(Model.CurrPost.Desc)
                 </div>
             </div>
             @Html.Partial("SpoilersItem")

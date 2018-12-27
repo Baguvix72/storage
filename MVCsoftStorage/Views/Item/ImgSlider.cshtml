@@ -5,23 +5,27 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         @{ index = 1;}
-        @foreach (var item in Model.Imgs)
+        @foreach (var item in Model.CurrPost.Imgs)
         {
             if (index == 1)
             {
-                <li data-target="#carouselExampleIndicators" data-slide-to="@index" class="active shadow-lg"></li>
+                <li data-target="#carouselExampleIndicators" 
+                    data-slide-to="@index" 
+                    class="active shadow-lg"></li>
                 { index++; }
             }
             else
             {
-                <li data-target="#carouselExampleIndicators" data-slide-to="@index" class="shadow-lg"></li>
+                <li data-target="#carouselExampleIndicators" 
+                    data-slide-to="@index" 
+                    class="shadow-lg"></li>
                 { index++; }
             }
         }
     </ol>
     <div class="carousel-inner itemIMGWrapper">
         @{ index = 1;}
-        @foreach (var item in Model.Imgs)
+        @foreach (var item in Model.CurrPost.Imgs)
         {
             if (index == 1)
             {

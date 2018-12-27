@@ -12,22 +12,7 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <table class="table table-borderless table-striped">
-                    <tbody>
-                        <tr>
-                            <td class="align-middle">Mark</td>
-                            <td class="d-flex justify-content-end"><a href="#" class="btn btn-secondary">Скачать</a></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle">Jacob</td>
-                            <td class="d-flex justify-content-end"><a href="#" class="btn btn-secondary">Скачать</a></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle">Larry</td>
-                            <td class="d-flex justify-content-end"><a href="#" class="btn btn-secondary">Скачать</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            @Html.Partial("SimilarTable")
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="mt-2 d-flex">
@@ -35,29 +20,25 @@
                         Ссылка:
                     </div>
                     <div class="alert alert-primary flex-fill" role="alert">
-                        A simple primary alert—check it out!
+                        <a href=""></a>
                     </div>
                 </div>
                 <div class="alert alert-secondary">
                     <p class="text-primary">
                         <b>Внимание!</b>
                     </p>
-                    <span>
-                        Это ссылка на особый .onion сайт. Чтобы открыть такой сайт,
-                        необходимо выполнить предварительную настройку.
-                    </span>
                     <p>
-                        <span>
-                            После настройки Вы сможете открывать не только .onion сайты, но и сайты,
-                            заблокированные Вашим интернет провайдером.
-                        </span>
-                        <span>
-                            Чтобы прочитать инструкцию по настройке, нажмите кнопку ниже.
-                        </span>
+                        Эти ссылки могут быть заблокированы в РФ.
+                    </p>
+                    <p>
+                        Чтобы открыть такой сайт, необходимо выполнить предварительную
+                        настройку Вашего компьютера.
+                    </p>
+                    <p>
+                        Вы хотите научиться открывать заблокированные сайты?
                     </p>
                     <button type="button" class="btn btn-primary">
-                        Да! Я хочу научиться открывать
-                        заблокированные сайты и .onion сайты!
+                        Да! Я хочу научиться открывать заблокированные сайты...
                     </button>
                 </div>
             </div>
